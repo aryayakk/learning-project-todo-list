@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import Modal from '../Modal/modal'
 
 const ToDoList = () => {
     const [todo, setTodo] = useState([
-        {time:'07.00', activity:'Sarapan'}
+        {time:'07.00', description:'Makan pagi pakai sereal dan susu', activity:'Sarapan'}
     ])
     const [input, setInput] = useState ({time:'', description:'', activity:''})
     const [index, setIndex] = useState(null)
@@ -12,7 +13,6 @@ const ToDoList = () => {
         let eachKey = e.target.name
 
         setInput({...input, [eachKey]:eachValue})
-
     }
 
     const handleSubmit = e => {
@@ -84,7 +84,7 @@ const ToDoList = () => {
                                                     <td>{res.activity}</td>
                                                     
                                                     <td className='button'>
-                                                        <button id='detail' onClick={showDetail} value={index}>detail</button>
+                                                        <button id='detail'>detail</button>
                                                         <button id='edit' onClick={handleEdit} value={index}>edit</button>
                                                         <button id='done'>done</button>
                                                     </td>
@@ -98,7 +98,6 @@ const ToDoList = () => {
                             )
                         }
                     </tbody>
-                    
                 </table>
             </div>
         </>
