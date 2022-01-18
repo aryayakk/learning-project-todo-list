@@ -4,7 +4,7 @@ const ToDoList = () => {
     const [todo, setTodo] = useState([
         {time:'07.00', activity:'Sarapan'}
     ])
-    const [input, setInput] = useState ({time:'', activity:''})
+    const [input, setInput] = useState ({time:'', description:'', activity:''})
     const [index, setIndex] = useState(null)
 
     const handleChange = e => {
@@ -27,7 +27,7 @@ const ToDoList = () => {
         }
 
         setTodo(newData)
-        setInput({time:'', activity:''})
+        setInput({time:'', description:'', activity:''})
     }
 
     const handleEdit = e => {
@@ -46,18 +46,20 @@ const ToDoList = () => {
             <div>
                 <form className='form-todo' onSubmit={handleSubmit}>
                     <div>
-                        <input type="submit" id='submit' value="Let's do it!"/>
+                        <input type="submit" id='submit' value="LET'S DO IT!"/>
                     </div>
                     <label htmlFor="act"></label>
                     <input onChange={handleChange} value={input.activity} type="text" id="act-input" name="activity" placeholder='What To Do?' />
                     <br/>
+                    <label htmlFor="desc"></label>
+                    <textarea onChange={handleChange} value={input.description} type="text" id="desc-input" name="description" placeholder='Description' />
                     <label htmlFor="time"></label>
-                    <input onChange={handleChange} value={input.time} type="text" id="time-input" name="time" placeholder='07.00' />
+                    <input onChange={handleChange} value={input.time} type="text" id="time-input" name="time" placeholder='Set Time (07.00)' />
                 </form>
             </div>
 
             <div className='todo-container'>
-                <table className='table table-dark table-hover'>
+                <table className='table table-borderless table-hover'>
                     <thead>
                         <tr>
                             <th>No</th>
@@ -82,6 +84,7 @@ const ToDoList = () => {
                                                     <td>{res.activity}</td>
                                                     
                                                     <td className='button'>
+                                                        <button id='detail' onClick={showDetail} value={index}>detail</button>
                                                         <button id='edit' onClick={handleEdit} value={index}>edit</button>
                                                         <button id='done'>done</button>
                                                     </td>
