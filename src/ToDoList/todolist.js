@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
-import Modal from '../Modal/modal'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const ToDoList = () => {
-    const [todo, setTodo] = useState([
-        {time:'07.00', description:'Makan pagi pakai sereal dan susu', activity:'Sarapan'}
-    ])
-    const [input, setInput] = useState ({time:'', description:'', activity:''})
+    const [todo, setTodo] = useState([])
+    const [input, setInput] = useState ({time:'', activity:'', description:'', id:0})
     const [index, setIndex] = useState(null)
+    const [modal, setModal] = useState(undefined)
+    
+    const getData = async () => {
+        let getFrom = await axios.get('http://localhost:3004/posts')
+        let result = getFrom.data
+// console.log('result', result)
+        setTodo(result)
+    }
+    
+    useEffect(() => {
+      getData()
+    },[])
 
     const handleChange = e => {
         let eachValue = e.target.value
@@ -17,29 +27,45 @@ const ToDoList = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        
-        let newData = todo
+        let id = input.id
+
         if(index === null) {
-            newData = [...todo, input]
+            axios.post('http://localhost:3004/posts', input)
+            getData()
+            setInput({time:'', description:'', activity:''})
         }
         else {
-            newData[index] = input
+            axios.put(`http://localhost:3004/posts/${id}`, input)
+            getData()
+            setInput({time:'', description:'', activity:''})
+            setIndex(null)
         }
-
-        setTodo(newData)
-        setInput({time:'', description:'', activity:''})
     }
 
-    const handleEdit = e => {
-        let indexEdited = parseInt(e.target.value)
-        setInput(todo[indexEdited])
-        setIndex(e.target.value)
+    const handleEdit = idCacthed => {
+        let inputEdit = todo.filter(e => e.id === idCacthed)
+// console.log(inputEdit)
+        setInput(inputEdit[0])
+        setIndex(true)
     }
 
-// console.log('index', index)
+    const handleDone = idCacthed => {
+        axios.delete(`http://localhost:3004/posts/${idCacthed}`)
+        getData()
+    }
+
+    const handleDetail = (id) => {
+
+        let detail = todo.filter(e => e.id === id)
+        console.log('detail',detail)
+        setModal(detail)
+    }
 // console.log('todo', todo)
+// console.log('index', index)
 // console.log('input', input)
+// console.log('modal', modal)
 
+       
     return (
         <>
             <h1 className='todo-title'>THINGS TO DO</h1>
@@ -71,35 +97,60 @@ const ToDoList = () => {
 
                     <tbody>
                         {
-                            todo!==null&&(
-                                <>
-                                {
-                                    todo.map(
-                                        (res, index) => {
-                                            return(
-                                                
-                                                <tr key={index}>
-                                                    <td>{index+1}</td>
-                                                    <td>{res.time}</td>
-                                                    <td>{res.activity}</td>
-                                                    
-                                                    <td className='button'>
-                                                        <button id='detail'>detail</button>
-                                                        <button id='edit' onClick={handleEdit} value={index}>edit</button>
-                                                        <button id='done'>done</button>
-                                                    </td>
-                                                </tr>
-                                                
-                                            )
-                                        }
-                                    )
-                                }
-                                </>
-                            )
+                            todo? 
+                            
+                                todo.map((res, index) => (
+                                    <>
+                                        <tr key={index}>
+                                            <td>{index+1}</td>
+                                            <td>{res.time}</td>
+                                            <td>{res.activity}</td>
+                                            
+                                            <td className='button'>
+                                                <button id='detail' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => handleDetail(res.id)} >detail</button>
+                                                <button id='edit' onClick={() => handleEdit(res.id)}>edit</button>
+                                                <button id='done' onClick={() => handleDone(res.id)}>done</button>
+                                            </td>
+                                        </tr>
+                                    </>
+                                ))
+                         
+                            : false
                         }
                     </tbody>
                 </table>
             </div>
+
+
+            {/* modal */}
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Detail</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div className="modal-body" key={modal}>
+                            {
+                                modal? 
+                                    <>
+                                        <p>{modal[0].time}</p>
+                                        <p>{modal[0].description}</p>
+                                        <p>{modal[0].todo}</p>
+                                    </>
+                            
+                                : false
+                            }
+                        </div>
+
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>    
+                    </div>
+                </div>
+            </div>  
         </>
     )
 }
