@@ -1,13 +1,13 @@
 import React from 'react';
-// import AddTodo from './AddTodo/add_todo';
+import AddTodo from './AddTodo/add_todo';
 import './App.css';
-import ToDoList from './ToDoList/todolist';
+import ToDo from './ToDoList/todo';
 
 function App() {
 
   return (
     <>
-      <ToDoList/>
+      <ToDo/>
     </>
   );
 }

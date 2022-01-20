@@ -1,16 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { ToDoContext } from './todo_context'
 
 const ToDoList = () => {
-    const [todo, setTodo] = useState([])
-    const [input, setInput] = useState ({time:'', activity:'', description:'', id:0})
-    const [index, setIndex] = useState(null)
-    const [modal, setModal] = useState(undefined)
+    // const [todo, setTodo] = useState([])
+    // const [input, setInput] = useState ({
+    //     time:'',
+    //     activity:'',
+    //     description:'',
+    //     id:0
+    // const [index, setIndex] = useState(null)
+    // const [modal, setModal] = useState(undefined)
+    // })
+
+    const {
+        todo, setTodo,
+        input, setInput,
+        index, setIndex,
+        modal, setModal
+    } = useContext(ToDoContext)
+    
     
     const getData = async () => {
         let getFrom = await axios.get('http://localhost:3004/posts')
-        let result = getFrom.data
+        let result = getFrom.data.filter(e => !e.isDeleted)
 // console.log('result', result)
+
         setTodo(result)
     }
     
@@ -25,17 +40,17 @@ const ToDoList = () => {
         setInput({...input, [eachKey]:eachValue})
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         let id = input.id
 
         if(index === null) {
-            axios.post('http://localhost:3004/posts', input)
+            await axios.post('http://localhost:3004/posts', input)
             getData()
             setInput({time:'', description:'', activity:''})
         }
         else {
-            axios.put(`http://localhost:3004/posts/${id}`, input)
+            await axios.put(`http://localhost:3004/posts/${id}`, input)
             getData()
             setInput({time:'', description:'', activity:''})
             setIndex(null)
@@ -49,20 +64,24 @@ const ToDoList = () => {
         setIndex(true)
     }
 
-    const handleDone = idCacthed => {
-        axios.delete(`http://localhost:3004/posts/${idCacthed}`)
+    const handleDone = async idCacthed => {
+        let inputDeleted = todo.filter(e => e.id === idCacthed)
+        let putDeletedItem = Object.assign(inputDeleted[0], {isDeleted: true})
+        await axios.put(`http://localhost:3004/posts/${idCacthed}`, putDeletedItem)
+
         getData()
+        // setInput(inputDeleted[0], {'isDeleted': true})
+        console.log('inputDeleted', inputDeleted)
+        console.log('putDeletedItem', putDeletedItem)
     }
 
     const handleDetail = (id) => {
-
         let detail = todo.filter(e => e.id === id)
         console.log('detail',detail)
         setModal(detail)
     }
 // console.log('todo', todo)
 // console.log('index', index)
-// console.log('input', input)
 // console.log('modal', modal)
 
        
