@@ -76,5 +76,19 @@
 
 #done {
   background-color: rgba(0, 255, 42, 0.829);
-  color: #234858;
+  color: #883d0b;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgb(255, 173, 214);
+}
+
+.modal-body {
+  background-color: antiquewhite;
 }

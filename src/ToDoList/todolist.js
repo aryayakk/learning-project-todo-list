@@ -22,7 +22,6 @@ const ToDoList = () => {
         runDetail(id)
     }
    
-console.log('modal', modal)
 
     return (
         <>
@@ -66,7 +65,7 @@ console.log('modal', modal)
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel" >{modal[0].activity}</h5>
+                            <h3 className="modal-title" id="exampleModalLabel" ><b>{modal? modal[0].activity : false}</b></h3>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 

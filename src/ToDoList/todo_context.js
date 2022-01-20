@@ -48,7 +48,7 @@ export const ToDoProvider = props => {
     }
     const runDetail = (id) => {
         let detail = todo.filter(e => e.id === id)
-        console.log('detail',detail)
+        // console.log('detail',detail)
         setModal(detail)
     }
 
