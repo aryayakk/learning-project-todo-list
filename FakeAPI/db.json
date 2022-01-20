@@ -1,24 +1,38 @@
 {
   "posts": [
     {
-      "time": "05.00",
-      "activity": "Meditasi",
-      "description": "Atur pernafasan dan sugesti positif ke pikiran",
       "id": 1,
-      "isDeleted": true
-    },
-    {
       "time": "07.00",
+      "activity": "Sarapan",
       "description": "Sereal, susu, pisang",
-      "activity": "Makan",
+      "isDeleted": false
+    },
+    {
       "id": 2,
+      "time": "08.00",
+      "activity": "Makan",
+      "description": "Sereal, susu, pisang",
+      "isDeleted": false
+    },
+    {
+      "time": "09.00",
+      "activity": "Mandi",
+      "description": "Jangan lupa keramas!",
+      "id": 3,
+      "isDeleted": false
+    },
+    {
+      "time": "10.00",
+      "activity": "Belajar coding",
+      "description": "Reactjs",
+      "id": 4,
       "isDeleted": true
     },
     {
-      "time": "07.30",
-      "description": "Olahraga ringan, kelenturan otot",
-      "activity": "Olahraga",
-      "id": 3,
+      "time": "12.00",
+      "activity": "Baca buku",
+      "description": "High Performance Habit by Brendon Burchard",
+      "id": 5,
       "isDeleted": false
     }
   ]
