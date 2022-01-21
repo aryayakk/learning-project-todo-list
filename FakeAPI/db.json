@@ -34,6 +34,69 @@
       "description": "High Performance Habit by Brendon Burchard",
       "id": 5,
       "isDeleted": false
+    },
+    {
+      "time": "17.00",
+      "activity": "Setrika",
+      "description": "Baju, celana, sprei",
+      "id": 6,
+      "isDeleted": false
+    },
+    {
+      "time": "09.00",
+      "activity": "Belajar masak di dapur",
+      "description": "sdfgs",
+      "id": 7,
+      "isDeleted": true
+    },
+    {
+      "time": "",
+      "activity": "dsfbdfbgbcgbsfgnsfg",
+      "description": "",
+      "id": 8,
+      "isDeleted": true
+    },
+    {
+      "time": "",
+      "activity": "sfgbfgbsfgsfgbsfgbs",
+      "description": "",
+      "id": 9,
+      "isDeleted": true
+    },
+    {
+      "time": "",
+      "activity": "sdfbfdbsfgbcbcvbzfhsfghbdth",
+      "description": "",
+      "id": 10,
+      "isDeleted": true
+    },
+    {
+      "time": "",
+      "activity": "asrgsdrgzdfgzdrgzdf",
+      "description": "",
+      "id": 11,
+      "isDeleted": true
+    },
+    {
+      "time": "",
+      "activity": "zfgzdfgzdfvzdfv≈fbdfzdbvxfvzdr",
+      "description": "",
+      "id": 12,
+      "isDeleted": true
+    },
+    {
+      "time": "",
+      "activity": "fvzdfvzdfvadfvzdfvzdfvzdfvadf",
+      "description": "",
+      "id": 13,
+      "isDeleted": true
+    },
+    {
+      "time": "20.00",
+      "activity": "Rapat RW",
+      "description": "Acara 17-an",
+      "id": 14,
+      "isDeleted": false
     }
   ]
 }
