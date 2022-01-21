@@ -26,10 +26,10 @@
       "activity": "Belajar coding",
       "description": "Reactjs",
       "id": 4,
-      "isDeleted": true
+      "isDeleted": false
     },
     {
-      "time": "12.00",
+      "time": "16.00",
       "activity": "Baca buku",
       "description": "High Performance Habit by Brendon Burchard",
       "id": 5,

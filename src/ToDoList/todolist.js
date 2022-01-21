@@ -36,27 +36,28 @@ const ToDoList = () => {
                         </tr>
                     </thead>
 
-                    <tbody>
                         {
                             todo? 
                                 todo.map((res, index) => (
-                                    <>
-                                        <tr key={index}>
-                                            <td>{index+1}</td>
-                                            <td>{res.time}</td>
-                                            <td>{res.activity}</td>
-                                            
-                                            <td className='button'>
-                                                <button onClick={() => handleDetail(res.id)} id='detail' data-bs-toggle="modal" data-bs-target="#exampleModal">detail</button>
-                                                <button onClick={() => handleEdit(res.id)} id='edit'>edit</button>
-                                                <button onClick={() => handleDone(res.id)} id='done'>done</button>
-                                            </td>
-                                        </tr>
-                                    </>
+                                    <tbody key={index}>
+                                        <>
+                                            <tr>
+                                                <td>{index+1}</td>
+                                                <td>{res.time}</td>
+                                                <td>{res.activity}</td>
+                                                
+                                                <td className='button'>
+                                                    <button onClick={() => handleDetail(res.id)} id='detail' data-bs-toggle="modal" data-bs-target="#exampleModal">detail</button>
+                                                    <button onClick={() => handleEdit(res.id)} id='edit'>edit</button>
+                                                    <button onClick={() => handleDone(res.id)} id='done'>done</button>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    </tbody>
                                 ))
                             : false
                         }
-                    </tbody>
+                    
                 </table>
             </div>
 
