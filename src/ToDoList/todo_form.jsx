@@ -32,7 +32,7 @@ function ToDoForm() {
 
   return (
     <>
-      <h1 className="todo-title">THINGS TO DO</h1>
+      <h1 className="todo-title">DAILY TO DO</h1>
       <form className="form-todo" onSubmit={handleSubmit}>
         <div>
           <input type="submit" id="submit" value="LET'S DO IT!" />

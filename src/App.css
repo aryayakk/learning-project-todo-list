@@ -1,3 +1,7 @@
+body {
+  background-image: url(Assets/background.jpg);
+}
+
 .form-todo {
   background-color: beige;
   width: 450px;
@@ -41,14 +45,22 @@
 }
 
 .todo-title {
-  margin: 50px auto auto auto;
+  margin: 20px auto 20px auto;
+  padding: 10px;
   text-align: center;
+  font-size: xxx-large;
+  font-weight: bolder;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  /* background-color: #ffffff; */
+  background-image: url(Assets/head.jpg);
+  background-position-y: bottom;
+  color: #ffffff
 }
 
 .todo-container {
   width: 450px;
   margin: 20px auto auto auto;
-  background-color: rgb(255, 173, 214);
+  background-color:  rgb(253 99 99 / 85%);
   border-radius: 10px;
   overflow: auto;
 }
@@ -70,16 +82,20 @@
 }
 
 .button span {
-  width: auto;
+  width: 125px;
   display: flex;
 }
 
 #detail {
   margin-right: 10px;
+  padding-right: 5px;
+    padding-left: 5px;
 }
 
 #edit {
   margin-right: 10px;
+  padding-right: 11px;
+  padding-left: 11px;
   background-color: rgba(0, 255, 255, 0.829);
   color: #17678b;
 }
@@ -96,7 +112,7 @@
 .modal-header {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: rgb(255, 173, 214);
+  background-color: rgb(253 99 99 / 85%);
 }
 
 .modal-body {

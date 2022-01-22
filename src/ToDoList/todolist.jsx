@@ -32,7 +32,6 @@ function ToDoList() {
         <table className="table table-borderless table-hover">
           <thead>
             <tr>
-              <th>No</th>
               <th>Time</th>
               <th>To Do</th>
               <th>Action</th>
@@ -41,9 +40,8 @@ function ToDoList() {
           <tbody>
             {
               todo
-                ? todo.map((res, index) => (
+                ? todo.map((res) => (
                   <tr key={res.id}>
-                    <td>{index + 1}</td>
                     <td>{res.time}</td>
                     <td>{res.activity}</td>
 

@@ -58,6 +58,7 @@ export function ToDoProvider(props) {
     getData();
     // console.log('inputDeleted from runDone', inputDeleted)
   };
+
   const runDetail = (id) => {
     const detail = todo.filter((e) => e.id === id);
     // console.log('detail',detail)
