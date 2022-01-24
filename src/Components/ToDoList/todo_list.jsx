@@ -5,9 +5,9 @@ function ToDoList() {
   const { todo, modal, runner } = useContext(ToDoContext);
   const {
     getData,
+    runEdit,
     runDone,
     runDetail,
-    runEdit,
   } = runner;
 
   useEffect(() => {

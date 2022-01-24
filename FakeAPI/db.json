@@ -40,7 +40,7 @@
       "activity": "Setrika",
       "description": "Baju, celana, sprei",
       "id": 6,
-      "isDeleted": false
+      "isDeleted": true
     },
     {
       "time": "09.00",
@@ -97,6 +97,13 @@
       "description": "Acara 17-an",
       "id": 14,
       "isDeleted": false
+    },
+    {
+      "time": "23.00",
+      "activity": "Tidur",
+      "description": "Jangan lupa gosok gigi dan keramas",
+      "id": 15,
+      "isDeleted": true
     }
   ]
 }
